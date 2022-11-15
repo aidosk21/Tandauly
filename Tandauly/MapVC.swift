@@ -11,31 +11,43 @@ import CoreLocation
 
 class MapVC: UIViewController {
     
-    @IBOutlet weak var mapKit: MKMapView!
+    @IBOutlet weak var currentAdressLabel: UILabel!
+    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var pinImage: UIImageView!
+    @IBOutlet weak var mapView: MKMapView!
     var place = Place()
     let identifier = "identifier"
     let locationManager = CLLocationManager()
-    let regionInMeters = 5000.0
+    let regionInMeters = 1000.0
+    var segueIdentifier = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = nil
-        setupPlacemark()
+        setupMapView()
         checkLocationServices()
     }
     
     
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        
+    }
     @IBAction func cancelTapped(_ sender: Any) {
         dismiss(animated: true)
     }
     
     @IBAction func navigatorTapped() {
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion(center: location,
-                                            latitudinalMeters: regionInMeters,
-                                            longitudinalMeters: regionInMeters)
-            mapKit.setRegion(region, animated: true)
+        showUserLocation()
+    }
+    
+    private func setupMapView() {
+        if segueIdentifier == "showPlace" {
+            currentAdressLabel.isHidden = true
+            doneButton.isHidden = true
+            pinImage.isHidden = true
+            setupPlacemark()
         }
+        
     }
     
     private func setupPlacemark() {
@@ -49,11 +61,8 @@ class MapVC: UIViewController {
             annotation.subtitle = self.place.type
             guard let placemarkLocation = placemark?.location else { return }
             annotation.coordinate = placemarkLocation.coordinate
-            self.mapKit.showAnnotations([annotation], animated: true)
-            self.mapKit.selectAnnotation(annotation, animated: true)
-            
-            
-            
+            self.mapView.showAnnotations([annotation], animated: true)
+            self.mapView.selectAnnotation(annotation, animated: true)
         }
     }
     
@@ -78,7 +87,8 @@ class MapVC: UIViewController {
     private func checkLocationAuthStatus() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways: break
-        case .authorizedWhenInUse: mapKit.showsUserLocation = true
+        case .authorizedWhenInUse: mapView.showsUserLocation = true
+            if segueIdentifier == "getAdress" { showUserLocation() }
             break
         case .denied:
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -89,6 +99,15 @@ class MapVC: UIViewController {
             break
         case .restricted: break
         @unknown default: break
+        }
+    }
+    
+    private func showUserLocation() {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location,
+                                            latitudinalMeters: regionInMeters,
+                                            longitudinalMeters: regionInMeters)
+            mapView.setRegion(region, animated: true)
         }
     }
     
@@ -108,7 +127,7 @@ extension MapVC: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
-        var annotationView = mapKit.dequeueReusableAnnotationView(withIdentifier: identifier)
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)

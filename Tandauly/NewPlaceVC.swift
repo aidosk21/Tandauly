@@ -100,12 +100,18 @@ class NewPlaceVC: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "showMap" else { return }
-        let mapVC = segue.destination as! MapVC
-        mapVC.place.name = placeNameTF.text!
-        mapVC.place.type = placeTypeTF.text!
-        mapVC.place.imageData = placeImage.image?.pngData()
-        mapVC.place.location = placeLocationTF.text
+        guard
+            let identifier = segue.identifier,
+            let mapVC = segue.destination as? MapVC
+            else { return }
+        mapVC.segueIdentifier = identifier
+        
+        if identifier == "showPlace" {
+            mapVC.place.name = placeNameTF.text!
+            mapVC.place.type = placeTypeTF.text!
+            mapVC.place.imageData = placeImage.image?.pngData()
+            mapVC.place.location = placeLocationTF.text
+        }
     }
     
     private func setupEditView() {
