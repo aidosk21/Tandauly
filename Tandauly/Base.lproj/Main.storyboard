@@ -278,9 +278,25 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="j0m-sS-alv"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="cancel"/>
+                                <state key="normal" image="can"/>
                                 <connections>
                                     <action selector="cancelTapped:" destination="99P-tT-pxx" eventType="touchUpInside" id="ap9-D0-vjb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DmR-nT-PGO">
+                                <rect key="frame" x="334" y="758" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="CDb-FC-7YU"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="EtY-9M-sW2"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="Yhz-VB-FUC"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="Z3S-ar-bP6"/>
+                                    <constraint firstAttribute="height" constant="40" id="iyZ-aa-HOC"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="zRJ-L6-Om6"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="navigator"/>
+                                <connections>
+                                    <action selector="navigatorTapped" destination="99P-tT-pxx" eventType="touchUpInside" id="mXq-b6-2yy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -288,11 +304,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="4hK-Av-jaB" secondAttribute="bottom" id="LVF-Ml-mny"/>
+                            <constraint firstItem="fmC-Kw-ZSn" firstAttribute="trailing" secondItem="DmR-nT-PGO" secondAttribute="trailing" constant="40" id="MIj-5m-BV9"/>
                             <constraint firstItem="4hK-Av-jaB" firstAttribute="leading" secondItem="fmC-Kw-ZSn" secondAttribute="leading" id="THQ-Ya-t9n"/>
                             <constraint firstItem="4hK-Av-jaB" firstAttribute="top" secondItem="Fw3-hf-3XL" secondAttribute="top" id="Upy-n2-iNm"/>
                             <constraint firstItem="XVD-He-9OS" firstAttribute="top" secondItem="fmC-Kw-ZSn" secondAttribute="top" constant="15" id="cec-2J-dW7"/>
                             <constraint firstItem="4hK-Av-jaB" firstAttribute="trailing" secondItem="fmC-Kw-ZSn" secondAttribute="trailing" id="gW4-el-FKo"/>
                             <constraint firstItem="fmC-Kw-ZSn" firstAttribute="trailing" secondItem="XVD-He-9OS" secondAttribute="trailing" constant="20" id="kHl-9R-0dY"/>
+                            <constraint firstItem="fmC-Kw-ZSn" firstAttribute="bottom" secondItem="DmR-nT-PGO" secondAttribute="bottom" constant="40" id="wjJ-cG-cIy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MDr-tf-bTt"/>
@@ -313,7 +331,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Ah2-74-6T2">
-                                <rect key="frame" x="-2" y="-3" width="414" height="897"/>
+                                <rect key="frame" x="-3" y="-3" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -430,7 +448,7 @@
             <objects>
                 <navigationController id="mAf-F4-kQ9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="JYH-hP-Ods">
-                        <rect key="frame" x="0.0" y="48" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="21"/>
@@ -478,8 +496,9 @@
         <segue reference="XYK-M8-Ksi"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="cancel" width="512" height="512"/>
+        <image name="can" width="256" height="256"/>
         <image name="mapImage" width="50" height="50"/>
+        <image name="navigator" width="256" height="256"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="star" width="512" height="512"/>
         <image name="star1" width="512" height="512"/>

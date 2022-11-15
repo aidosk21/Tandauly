@@ -15,6 +15,7 @@ class MapVC: UIViewController {
     var place = Place()
     let identifier = "identifier"
     let locationManager = CLLocationManager()
+    let regionInMeters = 5000.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,15 @@ class MapVC: UIViewController {
     
     @IBAction func cancelTapped(_ sender: Any) {
         dismiss(animated: true)
+    }
+    
+    @IBAction func navigatorTapped() {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location,
+                                            latitudinalMeters: regionInMeters,
+                                            longitudinalMeters: regionInMeters)
+            mapKit.setRegion(region, animated: true)
+        }
     }
     
     private func setupPlacemark() {
@@ -52,7 +62,10 @@ class MapVC: UIViewController {
             setupLocationManager()
             checkLocationAuthStatus()
         } else {
-            // alert
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(title: "Службы геолокации отключены",
+                               message: "Включите в настройках службы геолокации")
+            }
         }
         
     }
@@ -67,12 +80,27 @@ class MapVC: UIViewController {
         case .authorizedAlways: break
         case .authorizedWhenInUse: mapKit.showsUserLocation = true
             break
-        case .denied: break
+        case .denied:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(title: "Службы геолокации отключены",
+                               message: "Дайте Tandauly разрешение в настройках чтобы определить вашу геолокацию")
+            }
         case .notDetermined: locationManager.requestWhenInUseAuthorization()
             break
         case .restricted: break
         @unknown default: break
         }
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel)
+        let settingsAction = UIAlertAction(title: "Настройки", style: .default) { (_) -> Void in
+            let settingsUrl = NSURL(string: UIApplication.openSettingsURLString)
+            UIApplication.shared.open(settingsUrl! as URL, options: [:], completionHandler: nil) }
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        present(alertController, animated: true)
     }
 }
 
