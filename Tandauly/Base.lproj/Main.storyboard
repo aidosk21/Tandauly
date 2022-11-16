@@ -129,7 +129,7 @@
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" title="Button" image="gps"/>
                                                     <connections>
-                                                        <segue destination="99P-tT-pxx" kind="presentation" identifier="getAdress" id="EIa-hp-vhO"/>
+                                                        <segue destination="99P-tT-pxx" kind="presentation" identifier="getAddress" id="EIa-hp-vhO"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -306,7 +306,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Текущее Место" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NZ8-Ud-gnX">
                                 <rect key="frame" x="16" y="118" width="382" height="34"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -318,7 +318,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Готово" titleAlignment="center">
-                                    <fontDescription key="titleFontDescription" name="Arial-BoldMT" family="Arial" pointSize="30"/>
+                                    <fontDescription key="titleFontDescription" name="ArialMT" family="Arial" pointSize="30"/>
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -337,12 +337,26 @@
                                     <action selector="navigatorTapped" destination="99P-tT-pxx" eventType="touchUpInside" id="mXq-b6-2yy"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-Rn-2jf">
+                                <rect key="frame" x="184.5" y="743" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="FHL-QM-8Jl"/>
+                                    <constraint firstAttribute="height" constant="45" id="XxG-sl-b0r"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button" image="goButton"/>
+                                <connections>
+                                    <action selector="goDirButtonTapped" destination="99P-tT-pxx" eventType="touchUpInside" id="arK-HU-NcS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fmC-Kw-ZSn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="gzL-Rn-2jf" firstAttribute="centerX" secondItem="Fw3-hf-3XL" secondAttribute="centerX" id="7UX-xG-sTH"/>
                             <constraint firstItem="NZ8-Ud-gnX" firstAttribute="top" secondItem="fmC-Kw-ZSn" secondAttribute="top" constant="70" id="Ale-2W-8Lj"/>
                             <constraint firstItem="ifq-BB-Pgl" firstAttribute="centerX" secondItem="Fw3-hf-3XL" secondAttribute="centerX" id="BR6-lR-0QX"/>
+                            <constraint firstItem="fmC-Kw-ZSn" firstAttribute="bottom" secondItem="gzL-Rn-2jf" secondAttribute="bottom" constant="50" id="BZ3-c0-0hL"/>
                             <constraint firstItem="fmC-Kw-ZSn" firstAttribute="bottom" secondItem="Emm-lG-YZ4" secondAttribute="bottom" constant="50" id="DkA-BS-ryd"/>
                             <constraint firstAttribute="bottom" secondItem="4hK-Av-jaB" secondAttribute="bottom" id="LVF-Ml-mny"/>
                             <constraint firstItem="ifq-BB-Pgl" firstAttribute="centerY" secondItem="Fw3-hf-3XL" secondAttribute="centerY" constant="-25" id="Lri-LG-T2k"/>
@@ -360,8 +374,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="MDr-tf-bTt"/>
                     <connections>
-                        <outlet property="currentAdressLabel" destination="NZ8-Ud-gnX" id="vhT-ox-ivS"/>
+                        <outlet property="currentAddressLabel" destination="NZ8-Ud-gnX" id="vhT-ox-ivS"/>
                         <outlet property="doneButton" destination="Emm-lG-YZ4" id="5pq-Dr-z1m"/>
+                        <outlet property="goDirectionButton" destination="gzL-Rn-2jf" id="fBC-cV-bW3"/>
                         <outlet property="mapView" destination="4hK-Av-jaB" id="K9c-w7-VrO"/>
                         <outlet property="pinImage" destination="ifq-BB-Pgl" id="wWl-eC-RoR"/>
                     </connections>
@@ -379,7 +394,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Ah2-74-6T2">
-                                <rect key="frame" x="-3" y="-3" width="414" height="896"/>
+                                <rect key="frame" x="-4" y="-3" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -496,7 +511,7 @@
             <objects>
                 <navigationController id="mAf-F4-kQ9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="JYH-hP-Ods">
-                        <rect key="frame" x="0.0" y="48" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="21"/>
@@ -546,6 +561,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="can" width="256" height="256"/>
+        <image name="goButton" width="256" height="256"/>
         <image name="gps" width="512" height="512"/>
         <image name="mapImage" width="50" height="50"/>
         <image name="navigator" width="256" height="256"/>

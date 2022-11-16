@@ -105,6 +105,7 @@ class NewPlaceVC: UITableViewController {
             let mapVC = segue.destination as? MapVC
             else { return }
         mapVC.segueIdentifier = identifier
+        mapVC.mapVCDelegate = self
         
         if identifier == "showPlace" {
             mapVC.place.name = placeNameTF.text!
@@ -178,15 +179,25 @@ class NewPlaceVC: UITableViewController {
 
 
 extension UINavigationItem{
-
+    
     override open func awakeFromNib() {
         super.awakeFromNib()
-
+        
         let backItem = UIBarButtonItem()
         backItem.title = "Назад"
         self.backBarButtonItem = backItem
+        
     }
-
 }
+
+extension NewPlaceVC: MapVCDelegate {
+    func getAddress(address: String?) {
+        placeLocationTF.text = address
+    }
+    
+    
+}
+    
+    
     
 
