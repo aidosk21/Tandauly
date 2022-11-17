@@ -19,6 +19,7 @@
 		FAC294EB291EA08A008F5E2E /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC294EA291EA08A008F5E2E /* MapVC.swift */; };
 		FAD99998290A9A8C00323013 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD99997290A9A8C00323013 /* PlaceCell.swift */; };
 		FAD9999A290AA2C400323013 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD99999290AA2C400323013 /* PlaceModel.swift */; };
+		FAE4EE582926170100C85FE5 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4EE572926170100C85FE5 /* MapManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		FAC294EA291EA08A008F5E2E /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		FAD99997290A9A8C00323013 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		FAD99999290AA2C400323013 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
+		FAE4EE572926170100C85FE5 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,20 +92,61 @@
 		FA32BBD429002DD000D902AF /* Tandauly */ = {
 			isa = PBXGroup;
 			children = (
-				FA32BBD529002DD000D902AF /* AppDelegate.swift */,
-				FA32BBD729002DD000D902AF /* SceneDelegate.swift */,
+				FAE4EE5929262CE800C85FE5 /* ViewControllers */,
+				FAE4EE5B29262D4600C85FE5 /* Managers */,
+				FAE4EE5A29262D2800C85FE5 /* Models */,
+				FAE4EE5C29262D7500C85FE5 /* SupportingFiles */,
+				FAE4EE5D29262DA700C85FE5 /* IB */,
+			);
+			path = Tandauly;
+			sourceTree = "<group>";
+		};
+		FAE4EE5929262CE800C85FE5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
 				FA32BBE929002E1100D902AF /* MainVC.swift */,
 				FA885A762914114C00D44E98 /* NewPlaceVC.swift */,
 				FAC294EA291EA08A008F5E2E /* MapVC.swift */,
 				FAD99997290A9A8C00323013 /* PlaceCell.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FAE4EE5A29262D2800C85FE5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
 				FAD99999290AA2C400323013 /* PlaceModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FAE4EE5B29262D4600C85FE5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FAE4EE572926170100C85FE5 /* MapManager.swift */,
 				FA27CA87291BC07200A46340 /* StorageManager.swift */,
-				FA32BBDB29002DD000D902AF /* Main.storyboard */,
-				FA32BBE029002DD200D902AF /* LaunchScreen.storyboard */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		FAE4EE5C29262D7500C85FE5 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				FA32BBD529002DD000D902AF /* AppDelegate.swift */,
+				FA32BBD729002DD000D902AF /* SceneDelegate.swift */,
 				FA32BBDE29002DD200D902AF /* Assets.xcassets */,
 				FA32BBE329002DD200D902AF /* Info.plist */,
 			);
-			path = Tandauly;
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		FAE4EE5D29262DA700C85FE5 /* IB */ = {
+			isa = PBXGroup;
+			children = (
+				FA32BBDB29002DD000D902AF /* Main.storyboard */,
+				FA32BBE029002DD200D902AF /* LaunchScreen.storyboard */,
+			);
+			path = IB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +268,7 @@
 				FA32BBEA29002E1100D902AF /* MainVC.swift in Sources */,
 				FAD9999A290AA2C400323013 /* PlaceModel.swift in Sources */,
 				FA27CA88291BC07200A46340 /* StorageManager.swift in Sources */,
+				FAE4EE582926170100C85FE5 /* MapManager.swift in Sources */,
 				FA32BBD829002DD000D902AF /* SceneDelegate.swift in Sources */,
 				FAC294EB291EA08A008F5E2E /* MapVC.swift in Sources */,
 				FA885A772914114C00D44E98 /* NewPlaceVC.swift in Sources */,
@@ -379,7 +423,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2SQ428B324;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Tandauly/Info.plist;
+				INFOPLIST_FILE = Tandauly/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -410,7 +454,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2SQ428B324;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Tandauly/Info.plist;
+				INFOPLIST_FILE = Tandauly/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
